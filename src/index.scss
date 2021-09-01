@@ -1,0 +1,19 @@
+@import "helper";
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+ul,ol{
+  list-style: none;
+}
+body{
+  font-family: $font-hei;
+  font-size: 16px;
+  line-height: 1.2;
+}
