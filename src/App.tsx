@@ -1,12 +1,13 @@
 import React from 'react';
-import {HashRouter as Router, Switch, Route,} from "react-router-dom";
+import {HashRouter as Router, Switch, Route, Redirect,} from "react-router-dom";
 import Layout from "./components/Layout";
 
 const App = () => {
   return (
       <Router>
         <Switch>
-          <Route exact path="/">
+          <Redirect exact from="/" to="/edit" />
+          <Route path="/edit">
             <Record/>
           </Route>
           <Route path="/tags">

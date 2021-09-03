@@ -1,28 +1,19 @@
 import React from "react";
-import styled from "styled-components";
-// //为防止TreeShaking，使用require导入
-require("../icons/tag.svg");
-require("../icons/edit.svg");
-require("../icons/statistics.svg")
+
+//引入icons目录下所有的.svg文件。
+let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
+try {importAll(require.context('../icons', true, /\.svg$/));} catch (error) {console.log(error);}
 
 type Props = {
   name: string
 }
 
-const IconWrapper = styled.div`
-  .icon {
-    width: 24px;
-    height: 24px;
-  }
-`
 
 const Icon = (props: Props) => {
   return (
-      <IconWrapper>
-        <svg className="icon">
+        <svg>
           <use xlinkHref={'#' + props.name}/>
         </svg>
-      </IconWrapper>
   )
 };
 
