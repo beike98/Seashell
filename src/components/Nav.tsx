@@ -6,7 +6,7 @@ import Icon from "./Icon";
 const NavWrapper = styled.nav`
   line-height: 24px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
-
+  background: white;
   > ul {
     display: flex;
 
@@ -15,8 +15,7 @@ const NavWrapper = styled.nav`
       text-align: center;
 
       > a {
-        padding-top: 4px;
-        padding-bottom: 20px;
+        padding: 4px;
         display: flex;
         flex-direction: column;
         align-items: center;
