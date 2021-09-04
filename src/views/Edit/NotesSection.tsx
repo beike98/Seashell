@@ -34,4 +34,4 @@ const NotesSection = () => {
       </MyNotesSection>
   )
 }
-export {NotesSection}
+export default NotesSection

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, {useState} from "react";
 
 const MyTagsSection = styled.section`
   background: #FFFFFF;
@@ -14,9 +14,10 @@ const MyTagsSection = styled.section`
     margin: 0 -12px;
 
     > li {
-      &.selected{
+      &.selected {
         background: #3f90f7;
       }
+
       background: #D9D9D9;
       border-radius: 18px;
       display: inline-block;
@@ -37,17 +38,32 @@ const MyTagsSection = styled.section`
 `
 
 const TagsSection: React.FC = () => {
+  const [tags] = useState<string[]>(["吃饭", "购物", "交通", "房租", "工资"])
+  const [selectedTag, setSelectedTag] = useState<string>('')
+  const onSelect = (tag: string) => {
+    setSelectedTag(tag)
+  }
+  const getClassName = (tag: string) => {
+    if (tag === selectedTag) {
+      return 'selected'
+    } else {
+      return ''
+    }
+  }
   return (
       <MyTagsSection>
         <ol>
-          <li>衣</li>
-          <li className="selected">食</li>
-          <li>住</li>
-          <li>行</li>
+          {tags.map(tag =>
+              <li key={tag}
+                  onClick={() => {
+                    onSelect(tag)
+                  }}
+                  className={getClassName(tag)}>
+                {tag}</li>
+          )}
         </ol>
-        <button>新增标签</button>
       </MyTagsSection>
   )
 }
 
-export {TagsSection}
+export default TagsSection

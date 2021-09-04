@@ -62,4 +62,4 @@ const NumberPadSection = () => {
       </MyNumberSection>
   )
 }
-export {NumberPadSection}
+export default NumberPadSection

@@ -39,4 +39,4 @@ const CategorySection: React.FC = () => {
   )
 }
 
-export {CategorySection}
+export default CategorySection
