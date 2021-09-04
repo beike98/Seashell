@@ -15,7 +15,7 @@ const MyTagsSection = styled.section`
 
     > li {
       &.selected {
-        background: #3f90f7;
+        background: #57d5fa;
       }
 
       background: #D9D9D9;
@@ -37,14 +37,19 @@ const MyTagsSection = styled.section`
   }
 `
 
-const TagsSection: React.FC = () => {
+type Props = {
+  value: string,
+  onChange: (tag: string) => void
+}
+
+const TagsSection: React.FC<Props> = (props) => {
   const [tags] = useState<string[]>(["吃饭", "购物", "交通", "房租", "工资"])
-  const [selectedTag, setSelectedTag] = useState<string>('')
+  const selectedTag = props.value
   const onSelect = (tag: string) => {
     if (tag === selectedTag) {
-      setSelectedTag('')
+      props.onChange('')
     } else {
-      setSelectedTag(tag)
+      props.onChange(tag)
     }
   }
   const getClassName = (tag: string) => {

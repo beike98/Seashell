@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React from "react";
 
 const MyNumberSection = styled.section`
   display: flex;
@@ -39,8 +39,12 @@ const MyNumberSection = styled.section`
     }
   }
 `
-const NumberPadSection = () => {
-  const [output, setOutput] = useState('0');
+type Props = {
+  value:string,
+  onChange:(value:string)=>void
+}
+const NumberPadSection:React.FC<Props> = (props) => {
+  const output = props.value;
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     switch (text) {
@@ -55,33 +59,33 @@ const NumberPadSection = () => {
       case '8':
       case '9':
         if (output === '0') {
-          setOutput(text)
+          props.onChange(text)
         } else {
-          setOutput(output + text)
+          props.onChange(output + text)
         }
         if (output.indexOf('.') !== -1) {
           const maxLength = output.indexOf('.') + 3
           if (output.length >= maxLength) {
-            setOutput(output.substring(0, maxLength));
+            props.onChange(output.substring(0, maxLength));
           }
         } else if (output.length >= 12) {
-          setOutput(output.substring(0, 12));
+          props.onChange(output.substring(0, 12));
         }
         break;
       case '.':
         if (output.indexOf('.') === -1) {
-          setOutput(output + '.');
+          props.onChange(output + '.');
         }
         break;
       case '删除':
         if (output.length === 1) {
-          setOutput('0');
+          props.onChange('0');
         } else {
-          setOutput(output.substring(0, output.length - 1))
+          props.onChange(output.substring(0, output.length - 1))
         }
         break;
       case '清空':
-        setOutput('0');
+        props.onChange('0');
         break;
       case 'OK':
         console.log('ok')

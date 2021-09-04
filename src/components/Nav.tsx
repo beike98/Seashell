@@ -20,9 +20,9 @@ const NavWrapper = styled.nav`
         flex-direction: column;
         align-items: center;
         &.selected{
-          color: #3f90f7;
+          color: #57d5fa;
           > svg {
-            fill: #3f90f7;
+            fill: #57d5fa;
           }
         }
         > svg {
