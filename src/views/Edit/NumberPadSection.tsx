@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, {useState} from "react";
 
 const MyNumberSection = styled.section`
   display: flex;
@@ -40,10 +40,58 @@ const MyNumberSection = styled.section`
   }
 `
 const NumberPadSection = () => {
+  const [output, setOutput] = useState('0');
+  const onClickButtonWrapper = (e: React.MouseEvent) => {
+    const text = (e.target as HTMLButtonElement).textContent;
+    switch (text) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        if (output === '0') {
+          setOutput(text)
+        } else {
+          setOutput(output + text)
+        }
+        if (output.indexOf('.') !== -1) {
+          const maxLength = output.indexOf('.') + 3
+          if (output.length >= maxLength) {
+            setOutput(output.substring(0, maxLength));
+          }
+        } else if (output.length >= 12) {
+          setOutput(output.substring(0, 12));
+        }
+        break;
+      case '.':
+        if (output.indexOf('.') === -1) {
+          setOutput(output + '.');
+        }
+        break;
+      case '删除':
+        if (output.length === 1) {
+          setOutput('0');
+        } else {
+          setOutput(output.substring(0, output.length - 1))
+        }
+        break;
+      case '清空':
+        setOutput('0');
+        break;
+      case 'OK':
+        console.log('ok')
+        break;
+    }
+  }
   return (
       <MyNumberSection>
-        <div className="output">100</div>
-        <div className="pad clearfix">
+        <div className="output">{output}</div>
+        <div className="pad clearfix" onClick={onClickButtonWrapper}>
           <button>1</button>
           <button>2</button>
           <button>3</button>
