@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, {useState} from "react";
 
 const MyNotesSection = styled.section`
   background: #f5f5f5;
@@ -24,14 +24,18 @@ const MyNotesSection = styled.section`
     }
   }
 `
-const NotesSection = () => {
+const NoteSection = () => {
+  const [note, setNote] = useState('');
   return (
       <MyNotesSection>
         <label>
           <span>备注</span>
-          <input type="text" placeholder="在这里添加备注"/>
+          <input type="text"
+                 placeholder="在这里添加备注"
+                 value={note}
+                 onChange={(e)=>{setNote(e.target.value)}}/>
         </label>
       </MyNotesSection>
   )
 }
-export default NotesSection
+export default NoteSection

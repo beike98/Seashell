@@ -41,7 +41,11 @@ const TagsSection: React.FC = () => {
   const [tags] = useState<string[]>(["吃饭", "购物", "交通", "房租", "工资"])
   const [selectedTag, setSelectedTag] = useState<string>('')
   const onSelect = (tag: string) => {
-    setSelectedTag(tag)
+    if (tag === selectedTag) {
+      setSelectedTag('')
+    } else {
+      setSelectedTag(tag)
+    }
   }
   const getClassName = (tag: string) => {
     if (tag === selectedTag) {
