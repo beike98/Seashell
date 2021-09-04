@@ -17,6 +17,7 @@ const MyNumberSection = styled.section`
 
   > .pad {
     border: 3px solid white;
+    background: white;
 
     > button {
       font-size: 18px;
@@ -24,6 +25,8 @@ const MyNumberSection = styled.section`
       width: 25%;
       height: 64px;
       border: 3px solid white;
+      border-radius: 15px;
+      background: #efefef;
 
       &.ok {
         height: 128px;

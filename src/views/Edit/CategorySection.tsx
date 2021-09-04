@@ -6,7 +6,7 @@ const MyCategorySection = styled.section`
 
   > ul {
     display: flex;
-    background: #c4c4c4;
+    background: #d9d9d9;
 
     > li {
       width: 50%;

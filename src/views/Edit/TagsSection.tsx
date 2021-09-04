@@ -14,6 +14,9 @@ const MyTagsSection = styled.section`
     margin: 0 -12px;
 
     > li {
+      &.selected{
+        background: #3f90f7;
+      }
       background: #D9D9D9;
       border-radius: 18px;
       display: inline-block;
@@ -38,7 +41,7 @@ const TagsSection: React.FC = () => {
       <MyTagsSection>
         <ol>
           <li>衣</li>
-          <li>食</li>
+          <li className="selected">食</li>
           <li>住</li>
           <li>行</li>
         </ol>
