@@ -17,19 +17,6 @@ const MyNotesSection = styled.section`
       margin-right: 16px;
       white-space: nowrap;
     }
-
-    > textarea {
-      font-size: 14px;
-      width: 100%;
-      max-height: 72px;
-      background: none;
-      border: none;
-      overflow: auto;
-      word-break: break-all;
-      &:focus{
-        outline: none;
-      }
-    }
   }
 `
 type Props = {
@@ -42,7 +29,8 @@ const NoteSection:React.FC<Props> = (props) => {
       <MyNotesSection>
         <label>
           <span>备注</span>
-          <textarea rows={1}
+          <textarea className="autoText"
+                    rows={1}
                     placeholder="请输入备注"
                  value={note}
                  onChange={(e)=>{

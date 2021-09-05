@@ -25,10 +25,6 @@ const NavWrapper = styled.nav`
             fill: #57d5fa;
           }
         }
-        > svg {
-          width: 24px;
-          height: 24px;
-        }
       }
     }
   }

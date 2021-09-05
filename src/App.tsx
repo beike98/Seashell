@@ -1,33 +1,28 @@
 import React from 'react';
-import {HashRouter as Router, Switch, Route, Redirect,} from "react-router-dom";
+import {HashRouter, Switch, Route, Redirect,} from "react-router-dom";
 import Edit from './views/Edit';
 import Layout from "./components/Layout";
+import Tags from './views/Tags';
 
 const App = () => {
   return (
-      <Router>
+      <HashRouter>
         <Switch>
           <Redirect exact from="/" to="/edit" />
-          <Route path="/edit">
+          <Route exact path="/edit">
             <Edit/>
           </Route>
-          <Route path="/tags">
+          <Route exact path="/tags">
             <Tags/>
           </Route>
-          <Route path="/statistics">
+          <Route exact path="/statistics">
             <Statistics/>
           </Route>
           <Route path="*">
             <h2>路径有误！</h2>
           </Route>
         </Switch>
-      </Router>
-  );
-}
-
-const Tags = () => {
-  return (
-      <Layout><h2>标签页面</h2></Layout>
+      </HashRouter>
   );
 }
 

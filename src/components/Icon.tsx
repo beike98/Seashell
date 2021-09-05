@@ -8,7 +8,6 @@ type Props = {
   name: string
 }
 
-
 const Icon = (props: Props) => {
   return (
         <svg>

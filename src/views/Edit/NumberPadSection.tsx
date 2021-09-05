@@ -7,6 +7,7 @@ const MyNumberSection = styled.section`
 
   > .output {
     background: white;
+    color: #57d5fa;
     font-size: 36px;
     line-height: 72px;
     text-align: right;

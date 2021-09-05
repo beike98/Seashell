@@ -1,33 +1,91 @@
-@import "./helper.scss";
-* {margin: 0;padding: 0;}
-* {box-sizing: border-box;}
-*::before {box-sizing: border-box;}
-*::after {box-sizing: border-box;}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before {
+  box-sizing: border-box;
+}
+
+*::after {
+  box-sizing: border-box;
+}
+
 ul, ol {
   list-style: none;
 }
-a {text-decoration: none; color: inherit;}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
-  font-family: $font-hei;
+  font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;;
   font-size: 16px;
   line-height: 1.2;
   background: #f5f5f5;
   color: #333;
 }
+
 button {
   font-family: inherit;
 }
+
 :focus {
   outline: none;
 }
+
 .icon {
   width: 1em;
   height: 1em;
   display: inline-block;
 }
+
+svg {
+  width: 24px;
+  height: 24px;
+}
+
 .clearfix::after {
   content: '';
   display: block;
   clear: both;
 }
-a,button,input,textarea{-webkit-tap-highlight-color: rgba(0,0,0,0)}
+
+a, button, input, textarea {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+.oneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.autoText {
+  font-size: 14px;
+  width: 100%;
+  max-height: 72px;
+  background: none;
+  border: none;
+  overflow: auto;
+  word-break: break-all;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button {
+  border: none;
+  background: #57d5fa;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 18px;
+  color: #fff;
+}
