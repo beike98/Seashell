@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React from "react";
+import useTags from "../../useTags";
 
 const MyTagsSection = styled.section`
   background: #FFFFFF;
@@ -38,22 +39,22 @@ const MyTagsSection = styled.section`
 `
 
 type Props = {
-  value: string,
-  onChange: (tag: string) => void
+  value: number,
+  onChange: (tag: number) => void
 }
 
 const TagsSection: React.FC<Props> = (props) => {
-  const [tags] = useState<string[]>(["吃饭", "购物", "交通", "房租", "工资"])
-  const selectedTag = props.value
-  const onSelect = (tag: string) => {
-    if (tag === selectedTag) {
-      props.onChange('')
+  const {tags} = useTags();
+  const selectedTagId = props.value
+  const onSelect = (tagId:number) => {
+    if (tagId === selectedTagId) {
+      props.onChange(0)
     } else {
-      props.onChange(tag)
+      props.onChange(tagId)
     }
   }
-  const getClassName = (tag: string) => {
-    if (tag === selectedTag) {
+  const getClassName = (tagId: number) => {
+    if (tagId === selectedTagId) {
       return 'selected'
     } else {
       return ''
@@ -63,12 +64,12 @@ const TagsSection: React.FC<Props> = (props) => {
       <MyTagsSection>
         <ol>
           {tags.map(tag =>
-              <li key={tag}
+              <li key={tag.id}
                   onClick={() => {
-                    onSelect(tag)
+                    onSelect(tag.id)
                   }}
-                  className={getClassName(tag)}>
-                {tag}</li>
+                  className={getClassName(tag.id)}>
+                {tag.name}</li>
           )}
         </ol>
       </MyTagsSection>

@@ -3,6 +3,7 @@ import {HashRouter, Switch, Route, Redirect,} from "react-router-dom";
 import Edit from './views/Edit';
 import Layout from "./components/Layout";
 import Tags from './views/Tags';
+import Tag from 'views/Tag';
 
 const App = () => {
   return (
@@ -11,6 +12,9 @@ const App = () => {
           <Redirect exact from="/" to="/edit" />
           <Route exact path="/edit">
             <Edit/>
+          </Route>
+          <Route exact path="/tags/:id">
+            <Tag/>
           </Route>
           <Route exact path="/tags">
             <Tags/>

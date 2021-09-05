@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import Layout from "../components/Layout";
 import Icon from "../components/Icon";
 import styled from "styled-components";
+import useTags from "../useTags";
+import {Link} from "react-router-dom";
 
 const MyTags = styled.div`
   text-align: center;
@@ -11,12 +13,15 @@ const MyTags = styled.div`
     margin-bottom: 48px;
 
     > li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 40px;
       margin: 0 10px;
       border-bottom: 1px solid rgba(0, 0, 0, .1);
+
+      > a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 40px;
+      }
 
       > span {
         max-width: 90%;
@@ -26,15 +31,17 @@ const MyTags = styled.div`
 `
 
 const Tags = () => {
-  const [tags] = useState<string[]>(["吃饭", "购物", "交通", "房租", "工资"])
+  const {tags} = useTags();
   return (
       <Layout>
         <MyTags>
           <ol>
             {tags.map(tag =>
-                <li key={tag}>
-                  <span className="oneLine">{tag}</span>
-                  <Icon name="right"/>
+                <li key={tag.id}>
+                  <Link to={'/tags/'+tag.id}>
+                    <span className="oneLine">{tag.id}.&nbsp;{tag.name}</span>
+                    <Icon name="right"/>
+                  </Link>
                 </li>
             )}
           </ol>

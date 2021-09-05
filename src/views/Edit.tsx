@@ -13,16 +13,16 @@ const MyLayout = styled(Layout)`
 
 const Edit = () => {
   const [selected, setSelected] = useState({
-    tag: '',
+    tagId: 0,
     note: '',
     category: '-' as ('-' | '+'),
     amount: '0'
   })
   return (
       <MyLayout>
-        <TagsSection value={selected.tag}
-                     onChange={(tag) => setSelected({
-                       ...selected, tag: tag
+        <TagsSection value={selected.tagId}
+                     onChange={(tagId) => setSelected({
+                       ...selected, tagId:tagId
                      })}/>
         <NoteSection value={selected.note}
                      onChange={(note) => setSelected({
