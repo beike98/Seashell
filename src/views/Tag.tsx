@@ -1,6 +1,6 @@
 import React from 'react';
 import useTags from '../useTags';
-import {useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import Icon from "../components/Icon";
@@ -15,6 +15,10 @@ const TopBar = styled.header`
   line-height: 20px;
   padding: 14px;
   background: white;
+  >div{
+    width: 24px;
+    height: 24px;
+  }
 `
 const InputWrapper = styled.div`
   display: flex;
@@ -48,24 +52,32 @@ const ButtonWrapper = styled.div`
   text-align: center;
 `
 const Tag: React.FC = () => {
-  const {findTag} = useTags();
+  const {findTag, updateTag, deleteTag} = useTags();
   const {id} = useParams<Params>();
   const tag = findTag(parseInt(id));
   return (
       <Layout>
         <TopBar>
-          <Icon name="left"/>
+          <div onClick={useHistory().goBack}>
+            <Icon name="left"/>
+          </div>
           <span>编辑标签</span>
           <span style={{width: '24px'}}/>
         </TopBar>
         <InputWrapper>
           <label>
             <span>标签名</span>
-            <input type="text" value={tag.name}/>
+            <input type="text" value={tag.name}
+                   onChange={(e) => {
+                     updateTag(tag.id, e.target.value)
+                   }}/>
           </label>
         </InputWrapper>
         <ButtonWrapper>
-          <button className="button">删除标签</button>
+          <button className="button" onClick={() => {
+            deleteTag(tag.id)
+          }}>删除标签
+          </button>
         </ButtonWrapper>
       </Layout>
   );
