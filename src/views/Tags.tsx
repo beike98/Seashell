@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import Icon from "../components/Icon";
 import styled from "styled-components";
-import useTags from "../useTags";
+import useTags from "../hooks/useTags";
 import {Link} from "react-router-dom";
 
 const MyTags = styled.div`
@@ -31,7 +31,7 @@ const MyTags = styled.div`
 `
 
 const Tags = () => {
-  const {tags} = useTags();
+  const {tags,addTag} = useTags();
   return (
       <Layout>
         <MyTags>
@@ -45,7 +45,7 @@ const Tags = () => {
                 </li>
             )}
           </ol>
-          <button className="button">新建标签</button>
+          <button className="button" onClick={addTag}>新建标签</button>
         </MyTags>
       </Layout>
   );

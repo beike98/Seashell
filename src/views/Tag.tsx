@@ -1,5 +1,5 @@
 import React from 'react';
-import useTags from '../useTags';
+import useTags from '../hooks/useTags';
 import {useHistory, useParams} from 'react-router-dom';
 import styled from "styled-components";
 import Layout from "../components/Layout";
@@ -53,8 +53,8 @@ const ButtonWrapper = styled.div`
 `
 const Tag: React.FC = () => {
   const {findTag, updateTag, deleteTag} = useTags();
-  const {id} = useParams<Params>();
-  const tag = findTag(parseInt(id));
+  const {id: idString} = useParams<Params>();
+  const tag = findTag(parseInt(idString));
   return (
       <Layout>
         <TopBar>
@@ -67,15 +67,16 @@ const Tag: React.FC = () => {
         <InputWrapper>
           <label>
             <span>标签名</span>
-            <input type="text" value={tag.name}
+            <input type="text"
+                   value={tag.name}
                    onChange={(e) => {
-                     updateTag(tag.id, e.target.value)
+                     updateTag(tag.id, {name:e.target.value})
                    }}/>
           </label>
         </InputWrapper>
         <ButtonWrapper>
           <button className="button" onClick={() => {
-            deleteTag(tag.id)
+            deleteTag(tag.id);
           }}>删除标签
           </button>
         </ButtonWrapper>
@@ -83,4 +84,4 @@ const Tag: React.FC = () => {
   );
 };
 
-export default Tag;
+export default Tag
