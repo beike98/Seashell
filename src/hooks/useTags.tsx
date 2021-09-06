@@ -40,13 +40,17 @@ const useTags = () => {
     }
     return result;
   };
-  const updateTag = (id: number, {name}:{name: string}) => {
-    setTags(tags.map(tag => tag.id === id ? {id, name:name} : tag));
+  const updateTag = (id: number, {name}: { name: string }) => {
+    setTags(tags.map(tag => tag.id === id ? {id, name: name} : tag));
   };
   const deleteTag = (id: number) => {
     setTags(tags.filter(tag => tag.id !== id));
   };
-  return {tags, setTags, addTag, findTag, findTagIndex, updateTag, deleteTag};
+  const getName = (id: number) => {
+    const tag = tags.filter(t => t.id === id)[0];
+    return tag ? tag.name : '';
+  };
+  return {tags, setTags, getName, addTag, findTag, findTagIndex, updateTag, deleteTag};
 };
 
 export default useTags;

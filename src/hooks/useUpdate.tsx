@@ -9,6 +9,6 @@ const useUpdate = (fn: () => void, deps: any[]) => {
     if (count.current > 1) {
       fn();
     }
-  }, deps); // 不可变数据
+  }, [fn,deps]); // 不可变数据
 };
 export default useUpdate;

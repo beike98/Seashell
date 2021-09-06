@@ -5,19 +5,28 @@ import TagsSection from "./Edit/TagsSection";
 import NoteSection from "./Edit/NoteSection";
 import CategorySection from "./Edit/CategorySection";
 import NumberPadSection from "./Edit/NumberPadSection";
+import {useRecords} from "../hooks/useRecords";
 
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
 `
-
+const defaultFormData = {
+  tagId: 0,
+  note: '',
+  category: '-' as ('-' | '+'),
+  amount: '0'
+};
 const Edit = () => {
-  const [selected, setSelected] = useState({
-    tagId: 0,
-    note: '',
-    category: '-' as ('-' | '+'),
-    amount: '0'
-  })
+  const [selected, setSelected] = useState(defaultFormData)
+  const {addRecord} = useRecords();
+  const submit = () => {
+    if(addRecord(selected)){
+      addRecord(selected);
+      alert("保存成功");
+      setSelected(defaultFormData)
+    }
+  }
   return (
       <MyLayout>
         <TagsSection value={selected.tagId}
@@ -35,7 +44,8 @@ const Edit = () => {
         <NumberPadSection value={selected.amount}
                           onChange={(amount) => setSelected({
                             ...selected, amount: amount
-                          })}/>
+                          })}
+        onOk={submit}/>
       </MyLayout>
   )
 }

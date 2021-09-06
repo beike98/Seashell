@@ -42,7 +42,8 @@ const MyNumberSection = styled.section`
 `
 type Props = {
   value:string,
-  onChange:(value:string)=>void
+  onChange:(value:string)=>void,
+  onOk?:()=>void
 }
 const NumberPadSection:React.FC<Props> = (props) => {
   const output = props.value;
@@ -89,7 +90,7 @@ const NumberPadSection:React.FC<Props> = (props) => {
         props.onChange('0');
         break;
       case 'OK':
-        console.log('ok')
+        if (props.onOk){props.onOk()}
         break;
     }
   }

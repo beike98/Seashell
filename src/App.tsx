@@ -1,9 +1,9 @@
 import React from 'react';
 import {HashRouter, Switch, Route, Redirect,} from "react-router-dom";
 import Edit from './views/Edit';
-import Layout from "./components/Layout";
 import Tags from './views/Tags';
 import Tag from 'views/Tag';
+import Statistics from "./views/Statistics";
 
 const App = () => {
   return (
@@ -27,12 +27,6 @@ const App = () => {
           </Route>
         </Switch>
       </HashRouter>
-  );
-}
-
-const Statistics = () => {
-  return (
-      <Layout><h2>统计页面</h2></Layout>
   );
 }
 

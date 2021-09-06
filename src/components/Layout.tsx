@@ -8,6 +8,12 @@ const Wrapper = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
+  @media(min-width:500px){
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -250px;
+  }
 `
 
 const Main = styled.main`

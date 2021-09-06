@@ -68,7 +68,7 @@ const Tag: React.FC = () => {
           <label>
             <span>标签名</span>
             <input type="text"
-                   value={tag.name}
+                   placeholder="请输入新标签名"
                    onChange={(e) => {
                      updateTag(tag.id, {name:e.target.value})
                    }}/>

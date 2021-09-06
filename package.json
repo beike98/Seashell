@@ -103,6 +103,7 @@
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.13",
     "@types/webpack-env": "^1.16.2",
+    "dayjs": "^1.10.6",
     "svg-sprite-loader": "^6.0.9",
     "svgo-loader": "^3.0.0"
   },
